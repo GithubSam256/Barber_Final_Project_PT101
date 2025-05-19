@@ -1,0 +1,393 @@
+  body {
+    background-color: #2e2e2e;
+    color: #dcdcdc;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .text-primary {
+    color: #b0b0b0 !important;
+  }
+
+  .btn-blue,
+  .btn.btn-blue {
+    background-color: #555 !important;
+    color: #eee !important;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-blue:hover,
+  .btn.btn-blue:hover {
+    background-color: #777 !important;
+  }
+
+  .btn-outline-warning {
+    background-color: #444 !important;
+    border: 1px solid #777 !important;
+    color: #dcdcdc !important;
+    transition: background-color 0.3s ease, border 0.3s ease;
+  }
+
+  .btn-outline-warning:hover {
+    background-color: #666 !important;
+    border-color: #999 !important;
+  }
+
+  .circle-number {
+    background-color: #888;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.25em 0.6em;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+
+  .title-yellow,
+  .input-yellow,
+  .jobs {
+    background-color: #3a3a3a;
+    color: #ccc;
+  }
+
+  .form-control {
+    background-color: #444 !important;
+    color: #ddd !important;
+    border: 1px solid #666;
+  }
+
+  .form-control:focus {
+    background-color: #444;
+    color: #fff;
+    border-color: #aaa;
+    box-shadow: none;
+  }
+
+  .shadow-custom-sm {
+    box-shadow: 4px 4px 0 0 rgba(150, 150, 150, 0.2);
+  }
+
+  .bottom-window {
+    background-color: #3a3a3a;
+    border-radius: 8px;
+    padding: 1rem;
+    color: #eee;
+  }
+
+  .bottom-window-header {
+    background-color: #555;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .cpu-vrline {
+    width: 1px;
+    background-color: #777;
+    margin: 0 ;
+  }
+
+  .bg-warning {
+    background-color: #777 !important;
+    color: #fff !important;
+    transition: background-color 0.3s ease;
+  }
+
+  .bg-warning:hover {
+    background-color: #999 !important;
+  }
+
+  .bg-blue,
+  .btn-w {
+    background-color: #444;
+    color: #eee;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .bg-blue:hover,
+  .btn-w:hover {
+    background-color: #666;
+  }
+
+  .toast {
+    background-color: #3c3c3c;
+    color: #fff;
+    border: 1px solid #666;
+  }
+
+  .toast-header {
+    background-color: #2e2e2e;
+    color: #f77;
+  }
+
+  .cpu-vrline {
+    height: 2px;
+    background-color: #ccc;
+    margin: 4px 0;
+    width: 100%;
+    display: block;
+  }
+
+  p#process {
+    margin-bottom: 0rem !important;
+  }
+
+  .timeline-hrline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
+.forscroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 15px;
+}
+
+*::-webkit-scrollbar {
+  width: 8px; 
+}
+
+*::-webkit-scrollbar-track {
+  background: #3a3a3a; 
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #D4C9BE; 
+  border-radius: 4px; 
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #777; 
+}
+
+.tbl {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tbl::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tbl::-webkit-scrollbar-track {
+  background: #3a3a3a;
+}
+
+.tbl::-webkit-scrollbar-thumb {
+  background: #D4C9BE;
+  border-radius: 3px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tbl::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+@font-face {
+  src: url(ptfonts/OMORI_GAME2.ttf);
+  font-family: OMORI_GAME2;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #424242;
+  padding: 1.3rem 1%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  z-index: 100;
+  margin-bottom: 20px;
+}
+
+.logopics {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logopics p{
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  font-family: OMORI_GAME2;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.5vw, 3rem);
+  display: inline;
+}
+
+#texthead1 a{
+  text-decoration: none;
+}
+
+#texthead {
+  display: none;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgb(255, 255, 255), transparent);
+  transition: .2s;
+}
+
+.header:hover:after {
+  left: 100%;
+}
+
+.logo img {
+  width: 45px;
+}
+
+.navbar a {
+  font-size: clamp(1.5rem, 1.5vw, 3rem);
+  color: #fff;
+  text-decoration: none;
+  font-family: OMORI_GAME2;
+  font-weight: 1000;
+  margin-left: 2.5rem;
+}
+
+.navbar a:hover {
+  color: #3c3c3c;
+  transition: .3s ease;
+}
+
+.table-btn,
+.table-btn td,
+.tbl,
+.tbl th,
+.tbl td {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.bottom-window-body {
+  position: relative;
+  max-height: 350px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+  margin-bottom: 15px;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    margin: 10px 0;
+    display: none;
+    z-index: 11111;
+    position: absolute;
+    top: 50px;
+}
+
+.timeline-hrline {
+  width: 2px;
+  background-color: #ccc;
+  margin: 0 20px;
+  min-height: 50px;
+  display: block;
+}
+
+.mains {
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.left {
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.mains::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.mains::-webkit-scrollbar-track {
+  background: #3a3a3a; 
+}
+
+.mains::-webkit-scrollbar-thumb {
+  background: #D4C9BE; 
+  border-radius: 4px; 
+}
+
+.mains::-webkit-scrollbar-thumb:hover {
+  background: #777; 
+}
+
+#timeline {
+  max-width: 500px;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.25rem; /* equivalent to mt-1 */
+}
+
+#timeline::-webkit-scrollbar {
+  height: 10px;
+}
+
+#timeline::-webkit-scrollbar-track {
+  background: #3a3a3a; 
+}
+
+#timeline::-webkit-scrollbar-thumb {
+  background: #D4C9BE; 
+  border-radius: 4px; 
+}
+
+#timeline::-webkit-scrollbar-thumb:hover {
+  background: #777; 
+}
+
+.hides{
+  display: none;
+}
+
+.containers {
+  padding: 0 5px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mains {
+  flex: 1;
+}
+
+.left {
+  flex: 0 0 auto;
+  width: 35%;
+  min-width: 300px;
+}
+
+.d-flex.flex-column.gap-3 {
+  height: 100%;
+  width: 100%;
+}

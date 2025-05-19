@@ -1,0 +1,371 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CPU Scheduling Project</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="icon" type="image/x-icon" href="ptimages/catcote.gif">
+  <link rel="stylesheet" href="PT.css" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logopics">
+      <a href="dreamy.html" class="logo"><img src="ptimages/catcote.gif"></a>
+      <p>Barber, Sam Leonard M.</p>
+      <p id="texthead">Barber</p>
+    </div>
+
+    <nav class="navbar">
+      <a href="#">SBIT-1E</a>
+      <a href="#">Platform Technology</a>
+    </nav>
+  </header>
+
+
+  <div class="toast-container position-fixed p-3" style="top: 3em; right: 0">
+    <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast">
+      <div class="d-flex">
+        <div class="toast-header text-danger pe-1 pt-2 fs-5">
+          <i class="bi bi-exclamation-circle"></i>
+        </div>
+        <div class="toast-body ps-2">Invalid Input.</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <div class="containers">
+    <div class="d-flex flex-wrap justify-content-between position-relative head gap-4">
+      <!-- Left side -->
+      <div class="mb- left">
+
+
+        <div class="d-flex align-items-center mb-2 user-select-none">
+
+          <h2 class="text-primary fw-semibold fs-5 mb-0">
+            Select an Algorithm
+          </h2>
+        </div>
+
+        <div class="forscroll">
+          <div class="accordion border-0 shadow-none rounded" id="algorithmAccordion">
+            <div class="accordion-item bg-warning border-0 shadow-none rounded">
+              <h2 class="accordion-header bg-warning rounded" id="heading1">
+                <button id="accordionToggleBtn" class="accordion-button rounded p-2 shadow-none border-0 bg-warning"
+                  type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true"
+                  aria-controls="collapse1">
+                  <span id="accordionLabel" class="fw-semibold mb-0">Select an Algorithm</span>
+                </button>
+              </h2>
+              <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+                data-bs-parent="#algorithmAccordion">
+                <ol class="accordion-body list-unstyled position-relative p-0">
+                  <li>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="FCFS"
+                      checked />
+                    <label class="btn btn-outline-warning d-flex px-1 border-0 text-start fw-semibold" for="btnradio1">
+                      <span class="circle-number me-2">1</span> First Come First Serve (FCFS)
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+                      value="SJF" />
+                    <label class="btn btn-outline-warning d-flex px-1 border-0 text-start fw-semibold" for="btnradio2">
+                      <span class="circle-number me-2">2</span> Shortest Job First (SJF)
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
+                      value="NPP" />
+                    <label class="btn btn-outline-warning d-flex px-1 border-0 text-start fw-semibold" for="btnradio3">
+                      <span class="circle-number me-2">3</span> Non Preemptive Priority (NPP)
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"
+                      value="PP" />
+                    <label class="btn btn-outline-warning d-flex px-1 border-0 text-start fw-semibold" for="btnradio4">
+                      <span class="circle-number me-2">4</span> Preemptive Priority
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off"
+                      value="SRTF" />
+                    <label class="btn btn-outline-warning d-flex px-1 border-0 text-start fw-semibold" for="btnradio5">
+                      <span class="circle-number me-2">5</span> Shortest Remaining Time First
+                    </label>
+                  </li>
+                  <li>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off"
+                      value="RR" />
+                    <label class="btn btn-outline-warning d-flex px-1 border-0 text-start fw-semibold" for="btnradio6">
+                      <span class="circle-number me-2">6</span> Round Robin
+                    </label>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tbl">
+          <div class="w-100 pe-2 ms-1 mb-2">
+            <div class="btn-blue w-100 position-relative py-1 fw-semibold ps-1 rounded-2">
+              Table (Scroll Down)
+            </div>
+
+          </div>
+          <table class="table table-borderless" id="processTable">
+            <thead>
+              <tr>
+                <th>
+                  <div class="title-yellow flex-fill text-center">
+                    Process
+                  </div>
+                </th>
+                <th>
+                  <div class="title-yellow flex-fill text-center">
+                    AT
+                  </div>
+                </th>
+                <th>
+                  <div class="title-yellow flex-fill text-center">
+                    BT
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="body">
+              <tr>
+                <th>
+                  <div class="input-yellow flex-fill jobs text-center d-flex justify-content-center align-items-center"
+                    style="height: 100%">
+                    P1
+                  </div>
+                </th>
+                <td>
+                  <input type="number" min="0" aria-label="Arrival Time input"
+                    class="input-yellow flex-fill form-control shadow-none" style="min-width: 0" />
+                </td>
+                <td>
+                  <input type="number" min="0" aria-label="Burst Time input"
+                    class="input-yellow flex-fill form-control shadow-none" style="min-width: 0" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Inputs and Add Jobs button -->
+            <div class="d-flex align-items-center gap-2 mb-1 mt-3 pe-2 flex-wrap">
+              <div class="d-flex gap-2">
+              <button type="button" class="btn bg-warning px-1 add flex-shrink-0 ms-1 fw-semibold"
+                style="white-space: normal; line-height: 1.2" id="addRow">
+                Add Process
+              </button>
+              <button type="button" class="btn bg-warning px-1 delete flex-shrink-0 fw-semibold"
+                style="white-space: normal; line-height: 1.2" id="deleteRow">
+                Delete Process
+              </button>
+              </div>
+              <div class="ms-auto d-flex gap-2">
+                <button type="button" class="btn bg-warning fw-semibold btn-w py-2 add calc flex-shrink-0"
+                style="white-space: normal; line-height: 1.2" id="restartBtn">
+                Restart
+              </button>
+              <button type="button" onclick="takeScreenshot()" class="btn bg-warning fw-semibold btn-w py-2 add calc flex-shrink-0"
+                style="white-space: normal; line-height: 1.2" id="Savess">
+                Save
+              </button>
+              <button type="button" class="btn bg-warning fw-semibold btn-w py-2 add calc flex-shrink-0"
+                style="white-space: normal; line-height: 1.2" id="calculate">
+                Done
+              </button>
+              </div>
+            </div>
+          </div>
+        <div class="bottom-window w-100 mt-2 ">
+          <div class="bottom-window-header w-100 position-relative">
+            <span class="loading-s">
+              Timeline (Scroll Right) </span>
+            <span class="hides loading-l">
+
+              <div class="spinner-border" style="width: 20px; height: 20px;" role="status">
+                <span class="visually-hidden ">Loading...</span>
+              </div>
+              Generating
+            </span>
+
+          </div>
+
+          <div class="bottom-window-body specific-window">
+            <div class="horizontal-line"></div>
+            <div id="timeline" class="d-flex flex-row mt-1">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right side -->
+      <div class="flex-grow-1 mains">
+        <!-- Window controls top right -->
+
+        <!-- Top center input labels -->
+
+
+        <!-- Four blue buttons with numbers -->
+        <div class="d-flex flex-column gap-3" style="max-width: 100%">
+
+          <div class="bottom-window w-100">
+            <div class="bottom-window-header w-100 position-relative">
+              <span class="loading-s">
+                Gantt Chart (Scroll Down)
+              </span>
+              <span class="hides loading-l">
+
+                <div class="spinner-border" style="width: 20px; height: 20px;" role="status">
+                  <span class="visually-hidden ">Loading...</span>
+                </div>
+                Generating
+              </span>
+            </div>
+            <div class="bottom-window-body">
+
+              <div id="ganttChart" class="px-3 mt-2">
+                <div id="head" class="d-flex flex-row"></div>
+                <div id="gbody" class="d-flex flex-row"></div>
+                <div id="tail" class="d-flex flex-row"></div>
+                <div id="queue" class="d-flex flex-row"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-window w-100">
+            <div class="bottom-window-header w-100 position-relative">
+              <span class="loading-s">
+                Turn-around Time (Scroll Down)
+              </span>
+              <span class="hides loading-l">
+
+                <div class="spinner-border" style="width: 20px; height: 20px;" role="status">
+                  <span class="visually-hidden ">Loading...</span>
+                </div>
+                Generating
+              </span>
+            </div>
+            <div class="bottom-window-body">
+              <div class="table-btn d-flex px-2 pe-4" style="max-width: 100%; width: 70%">
+                <table class="table" id="resultTable">
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-window w-100">
+            <div class="bottom-window-header w-100 position-relative">
+              <span class="loading-s">
+                Waiting Time (Scroll Down)
+              </span>
+              <span class="hides loading-l">
+
+                <div class="spinner-border" style="width: 20px; height: 20px;" role="status">
+                  <span class="visually-hidden ">Loading...</span>
+                </div>
+                Generating
+              </span>
+            </div>
+            <div class="bottom-window-body">
+              <div class="table-btn d-flex px-2 pe-4" style="max-width: 100%; width: 70%">
+                <table class="table" id="resultTableWaitingTime">
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-window w-100 mb-3">
+            <div class="bottom-window-header w-100 position-relative">
+              <span class="loading-s">
+                Percentage of CPU Scheduling (Scroll Down)
+              </span>
+              <span class="hides loading-l">
+
+                <div class="spinner-border" style="width: 20px; height: 20px;" role="status">
+                  <span class="visually-hidden ">Loading...</span>
+                </div>
+                Generating
+              </span>
+            </div>
+            <div class="bottom-window-body ">
+              <div class="cpuResult d-flex gap-3 px-2 fw-normal d-flex align-items-center" id="cpuResult">
+                <div class="d-flex flex-column align-items-center justify-content-center cpuComp">
+                  <p id="process" class="text-center fw-normal fs-6"></p>
+                  <div class="cpu-vrline "></div>
+                  <p id="completion" class="p-0 m-0 fs-6 fw-normal"></p>
+                </div>
+                <p class="d-flex justify-content-center align-items-center mb-0 fs-6 fw-normal">
+                  <span id="waladin" class="p-0">  </span>
+                   <div
+                        class="d-flex flex-column align-items-center justify-items-center justify-content-center"
+                      >
+                        <div
+                          class="d-flex border border-2 border-top-0 border-top-0 border-start-0 border-end-0 border-light  pb-1 "
+                          id="adds"
+                          style="width: 100%;"
+                        >
+                        </div>
+                        <span class="inline-block pt-1" id="burstt"> </span>
+                      </div>
+                      <span id="wala" class="d-flex align-items-center"></span>
+                  <div id="cpuTotal" style="height: fit-content"
+                    class="px-2 bg-blue rounded ms-2 fs-6 fw-normal py-auto justify-content-center align-items-center d-flex"></div>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const radioButtons = document.querySelectorAll('input[name="btnradio"]');
+    const labelDisplay = document.getElementById('accordionLabel');
+    const collapse = document.getElementById('collapse1');
+
+    function getSelectedAlgorithm() {
+      const selected = document.querySelector('input[name="btnradio"]:checked');
+      if (selected) {
+        const label = document.querySelector(`label[for="${selected.id}"]`);
+        return label?.textContent.trim() || 'Select an Algorithm';
+      }
+      return 'Select an Algorithm';
+    }
+
+    radioButtons.forEach(rb => {
+      rb.addEventListener('change', () => {
+        labelDisplay.textContent = getSelectedAlgorithm();
+      });
+    });
+
+    collapse.addEventListener('shown.bs.collapse', () => {
+      labelDisplay.textContent = getSelectedAlgorithm() ;
+    });
+
+    collapse.addEventListener('hidden.bs.collapse', () => {
+      labelDisplay.textContent = getSelectedAlgorithm();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      labelDisplay.textContent = getSelectedAlgorithm();
+    });
+  </script>
+  <script type="module" src="PT.js"></script>
+  <script type="module" src="screenshot.js"></script>
+  <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
